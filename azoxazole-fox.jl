@@ -11,7 +11,6 @@ write_config = Microprediction.Config("cbcdebcfee86ba6f7f1438a75968f5cf")
 function make_sample(stream_name)
     values = Microprediction.get_lagged_values(write_config, stream_name)
 
-    # Since emoji's are counts and there are no partial usages fit a poission distribution.
     distribution = kde!(convert(Array{Float64}, values))
 
     # Grab random samples
